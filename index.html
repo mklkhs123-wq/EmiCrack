@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Finance Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><img src="logo.png" alt="logo" /><span>Smart Finance Hub</span></div>
+    <nav>
+      <button data-tab="calculators" class="active">Calculators</button>
+      <button data-tab="pay">Pay EMI</button>
+      <button data-tab="news">Finance News</button>
+      <button data-tab="companies">Companies</button>
+    </nav>
+    <div class="auth-area" id="authArea">
+      <button id="btnShowLogin">Login</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="calculators" class="tab active">
+      <div class="card">
+        <div class="tab-buttons">
+          <button data-type="emi" class="tab-btn active">EMI</button>
+          <button data-type="fd" class="tab-btn">FD</button>
+          <button data-type="sip" class="tab-btn">SIP</button>
+          <button data-type="ppf" class="tab-btn">PPF</button>
+          <button data-type="rd" class="tab-btn">RD</button>
+        </div>
+        <div class="calc-body">
+          <div id="calcForm"></div>
+          <div id="calcResult" class="result-panel"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pay" class="tab">
+      <div class="card">
+        <h3>Pay EMI</h3>
+        <div class="row">
+          <label>Choose Company
+            <select id="companySelect"></select>
+          </label>
+          <label>Loan / Account No <input id="loanNumber" /></label>
+          <label>Amount (₹) <input id="payAmount" type="number" /></label>
+        </div>
+        <div class="row actions">
+          <button id="payWithUpi">Pay with UPI</button>
+          <button id="payWithGateway">Pay with Gateway</button>
+          <button id="redirectToCompany">Go to Company Payment Page</button>
+        </div>
+        <div id="payStatus" class="result-panel"></div>
+      </div>
+    </section>
+
+    <section id="news" class="tab">
+      <div class="card">
+        <h3>Latest Finance News</h3>
+        <div id="newsList" class="list"></div>
+      </div>
+    </section>
+
+    <section id="companies" class="tab">
+      <div class="card">
+        <h3>Finance Companies</h3>
+        <div id="companiesList" class="list"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Login modal simple -->
+  <div id="loginModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h3>Login / Register</h3>
+      <input id="modalName" placeholder="नाम (रजिस्टर के लिए)" />
+      <input id="modalEmail" placeholder="ईमेल" />
+      <input id="modalPassword" placeholder="पासवर्ड" type="password" />
+      <div class="row">
+        <button id="modalRegister">Register</button>
+        <button id="modalLogin">Login</button>
+        <button id="modalClose">Close</button>
+      </div>
+      <div id="modalMsg" class="muted"></div>
+    </div>
+  </div>
+
+  <footer class="footer">© Smart Finance Hub</footer>
+  <script src="app.js"></script>
+</body>
+</html>
